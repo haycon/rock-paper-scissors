@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script>
+            let getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
+
+            
+            let computerPlay = () => {
+                let choices = ["Rock", "Paper", "Scissor"];
+
+                return choices[getRandomInt(3)];
+            }
+
+            let playRound = (playerSelection, computerSelection) => {
+
+                if(playerSelection.toLowerCase() == computerSelection.toLowerCase()){
+                    return "Draw";
+                }
+
+                if(playerSelection.toLowerCase()== "rock" &&  computerSelection.toLowerCase() == "scissor"){
+                    return "Player wins!"
+                }
+
+                if(playerSelection.toLowerCase()== "scissor" &&  computerSelection.toLowerCase() == "paper"){
+                    return "Player wins!"
+                }
+
+                if(playerSelection.toLowerCase()== "paper" &&  computerSelection.toLowerCase() == "rock"){
+                    return "Player wins!"
+                }
+
+                if(playerSelection.toLowerCase()== "rock" &&  computerSelection.toLowerCase() == "paper"){
+                    return "Computer wins!"
+                }
+
+                if(playerSelection.toLowerCase()== "scissor" &&  computerSelection.toLowerCase() == "rock"){
+                    return "Computer wins!"
+                }
+
+                if(playerSelection.toLowerCase()== "paper" &&  computerSelection.toLowerCase() == "scissor"){
+                    return "Computer wins!"
+                }
+            }
+
+            let game = () => {
+                let playerScore = 0;
+                let computerScore = 0;
+                
+                for (let i = 0; i<5; i ++){
+                    let playerChoice = prompt("Rock, paper or scissors?");
+
+                    let result = playRound(playerChoice,computerPlay())
+
+                    if( result == "Computer wins!"){
+                        computerScore++;
+                    };
+                    
+
+                    if( result == "Player wins!"){
+                        playerScore ++;
+                    };  
+                }
+                if(playerScore > computerScore){
+                        return "Player won with " + playerScore + " points, computer got " + computerScore
+                    } else {
+                        return "Computer won with " + computerScore + " points, player got " + playerScore
+                    }
+            }
+            
+            console.log(game())
+            
+        </script>
+    </body>
+</html>
