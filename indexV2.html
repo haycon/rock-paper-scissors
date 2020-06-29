@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <div id="center">
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissor">Scissor</button>
+        </div>
+
+        <div id="results">
+            <div id="pscore">
+                <p>Player score: </p>
+                <div id="pvalue">
+                    <p>0</p>
+                </div>
+            </div>
+                <div id="cscore">
+                    <p>Computer score:</p>
+                    <div id="cvalue">
+                        <p>0</p>
+                    </div>
+                </div>
+                <div id="results">
+                    
+                </div>
+        </div>
+
+        <script>
+            let getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
+
+            let playerScore = 0;
+            let computerScore = 0;
+
+            const buttons = document.querySelectorAll("button");
+
+            let value = 0;
+            buttons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    value = (button.id)
+                    console.log(game());
+                });
+            });
+
+
+            /*
+            scissor.onclick = alertFunction;
+            scissor.addEventListener("click", alertFunction);
+            
+            function alertFunction() {
+                alert("helo");
+            }
+
+            <button onclick="alertFunction()" id="paper">Paper</button>
+            const rock = document.querySelector("#rock");
+            rock.addEventListener("click", () => {
+                alert("hello");
+            });
+            */
+
+            let computerPlay = () => {
+                let choices = ["rock", "paper", "scissor"];
+
+                return choices[getRandomInt(3)];
+            }
+
+            let playRound = (playerSelection, computerSelection) => {
+
+                if(playerSelection == computerSelection){
+                    return "Draw";
+                }
+
+                if(playerSelection == "rock" &&  computerSelection == "scissor"){
+                    return "Player wins!"
+                }
+
+                if(playerSelection == "scissor" &&  computerSelection == "paper"){
+                    return "Player wins!"
+                }
+
+                if(playerSelection == "paper" &&  computerSelection == "rock"){
+                    return "Player wins!"
+                }
+
+                if(playerSelection == "rock" &&  computerSelection == "paper"){
+                    return "Computer wins!"
+                }
+
+                if(playerSelection == "scissor" &&  computerSelection == "rock"){
+                    return "Computer wins!"
+                }
+
+                if(playerSelection == "paper" &&  computerSelection == "scissor"){
+                    return "Computer wins!"
+                }
+            }
+
+            let game = () => {
+
+                let playerChoice = value;
+
+                let result = playRound(playerChoice,computerPlay())
+
+                if( result == "Computer wins!"){
+                    computerScore++;
+                    cvalue.textContent = computerScore;
+                };
+                    
+
+                if( result == "Player wins!"){
+                    playerScore ++;
+                    pvalue.textContent=playerScore;
+                };  
+                
+                if(playerScore > computerScore && playerScore == 5){
+                        results.textContent = "Player wins"
+                    } 
+                if (computerScore > playerScore && computerScore == 5){
+                        results.textContent = "Computer wins" 
+                }
+            }
+
+        </script>
+    </body>
+</html>
