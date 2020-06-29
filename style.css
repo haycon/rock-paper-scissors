@@ -3,7 +3,7 @@
     text-align: center;
 }
 
-#results {
+#main {
     border: 2px solid black;
     width: 75%;
     margin: 20px auto;
@@ -11,5 +11,10 @@
     text-align: center;
 }
 
+#results {
+    border: 2px solid black;
+    padding: 20px;
+    margin-top: 20px;
+}
 
 

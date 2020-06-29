@@ -22,22 +22,20 @@
             <button id="scissor">Scissor</button>
         </div>
 
-        <div id="results">
-            <div id="pscore">
-                <p>Player score: </p>
-                <div id="pvalue">
+        <div id="main">
+            <p>Player score: </p>
+            <div id="pvalue">
+                <p>0</p>
+            </div>
+                <p>Computer score:</p>
+                <div id="cvalue">
                     <p>0</p>
                 </div>
+                <div id="win">
+                    <p>Click a button to start! Best of 5!</p>
+                </div>
+            <div id="results">           
             </div>
-                <div id="cscore">
-                    <p>Computer score:</p>
-                    <div id="cvalue">
-                        <p>0</p>
-                    </div>
-                </div>
-                <div id="results">
-                    
-                </div>
         </div>
 
         <script>
@@ -118,13 +116,20 @@
                 if( result == "Computer wins!"){
                     computerScore++;
                     cvalue.textContent = computerScore;
+                    win.textContent = "Computer won this round!"
                 };
                     
 
                 if( result == "Player wins!"){
                     playerScore ++;
                     pvalue.textContent=playerScore;
+                    win.textContent = "Player won this round!"
                 };  
+
+                if( result == "Draw"){
+                    win.textContent = "Draw!"
+                }; 
+
                 
                 if(playerScore > computerScore && playerScore == 5){
                         results.textContent = "Player wins"
